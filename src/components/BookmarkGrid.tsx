@@ -8,6 +8,7 @@ import styled from "styled-components/macro";
 import { SortableContainer } from "react-sortable-hoc";
 import { BookmarkGridItem } from "./BookmarkGridItem";
 import { Folder } from "../types/Folder";
+import { Bookmark } from "../types/Bookmark";
 
 interface Props {
   folder: Folder;
@@ -15,11 +16,44 @@ interface Props {
   isFolderHidden: boolean;
 }
 
+// TODO: OPtimise the algorithm
+const filterBookmark = (bookmarks: Bookmark[]): Bookmark[] => {
+  const listFiltered: Bookmark[] = [];
+  bookmarks = bookmarks.sort((item1, item2) => {
+    if (item1.title === item2.title) {
+      return 0;
+    } else if (item1.title > item2.title) {
+      return 1;
+    }
+    return -1;
+  });
+  bookmarks.forEach((bookmark, index) => {
+    if (index === bookmarks.length - 1) {
+      listFiltered.push(bookmark);
+      return;
+    }
+    if (
+      bookmark.title === "" ||
+      bookmark.title !== bookmarks[index + 1].title
+    ) {
+      listFiltered.push(bookmark);
+    }
+  });
+  return listFiltered.sort((item1, item2) => {
+    if (item1.id === item2.id) {
+      return 0;
+    } else if (item1.id > item2.id) {
+      return 1;
+    }
+    return -1;
+  });
+};
+
 export const BookmarkGrid = SortableContainer<Props>(
   ({ folder, isDragging, isFolderHidden }) => {
     return (
       <Root>
-        {folder.bookmarks.map((bookmark, index) => (
+        {filterBookmark(folder.bookmarks).map((bookmark, index) => (
           <BookmarkGridItem
             key={bookmark.id}
             id={bookmark.id}

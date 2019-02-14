@@ -13,8 +13,9 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "preserve",
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "typeRoots": ["./types", "./node_modules/@types"],
   },
-  "exclude": ["build/**"],
+  "exclude": ["build/**", "node_modules", "typings"],
   "include": ["src"]
 }

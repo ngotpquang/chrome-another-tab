@@ -6,7 +6,7 @@ import { rehydrateSaga } from "./rehydrateSaga";
 import { persistSaga } from "./persistSaga";
 import { moveBookmarkSaga } from "./moveBookmarkSaga";
 
-export const rootSaga = function*() {
+export const rootSaga = function* () {
   yield all([
     takeEvery(getType(actions.retrieveBookmarks), retrieveBookmarksSaga),
     takeEvery(getType(actions.rehydrate), rehydrateSaga),
@@ -16,7 +16,8 @@ export const rootSaga = function*() {
         getType(actions.showFolder),
         getType(actions.hideFolder),
         getType(actions.goToNextTheme),
-        getType(actions.retrieveBookmarksSuccess)
+        getType(actions.retrieveBookmarksSuccess),
+        getType(actions.goToNextQuote)
       ],
       persistSaga
     )

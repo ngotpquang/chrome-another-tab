@@ -66,6 +66,11 @@ const rehydrateSuccess = createAction("other/REHYDRATE_SUCCESS", resolve => {
   return (persistedState: ReduxPersistedState) => resolve(persistedState);
 });
 
+// Theme actions
+const goToNextQuote = createAction("quote/GO_TO_NEXT_QUOTE", resolve => {
+  return () => resolve();
+});
+
 export const actions = {
   toggleShowHiddenBookmarks,
   setQuery,
@@ -77,5 +82,6 @@ export const actions = {
   showFolder,
   goToNextTheme,
   rehydrate,
-  rehydrateSuccess
+  rehydrateSuccess,
+  goToNextQuote
 };

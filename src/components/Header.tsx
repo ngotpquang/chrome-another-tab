@@ -15,6 +15,8 @@ import {
   Show as ShowIcon
 } from "styled-icons/boxicons-regular";
 import { ColorLens as ColorLensIcon } from "styled-icons/material";
+import { Heart as HeartIcon } from "styled-icons/boxicons-regular/Heart"
+import { QuoteRight as QuoteIcon } from "styled-icons/boxicons-solid/QuoteRight";
 import { useKeyboardPress } from "../hooks/useKeyboardPress";
 import { Theme } from "../types/Theme";
 
@@ -28,7 +30,8 @@ export const Header: FC = memo(props => {
   const {
     toggleShowHiddenBookmarks,
     setQuery,
-    goToNextTheme
+    goToNextTheme,
+    goToNextQuote
   } = useMappedActions(actions);
   const searchBarRef = useRef<HTMLInputElement>(null);
 
@@ -52,11 +55,16 @@ export const Header: FC = memo(props => {
     goToNextTheme();
   };
 
+  const handleQuoteSwitchClick = (e: MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    goToNextQuote();
+  };
+
   return (
     <Root>
       <Logo>
-        <StyledLogoImage />
-        <LogoText>Another Tab</LogoText>
+        <StyledHeartIcon />
+        <LogoText>Quang's Tab</LogoText>
       </Logo>
       <SearchBar ref={searchBarRef} query={query} onChange={setQuery} />
       <Menu>
@@ -68,11 +76,8 @@ export const Header: FC = memo(props => {
           <StyledColorLensIcon />
         </MenuItem>
         <Separator />
-        <MenuItem
-          href="https://github.com/mmazzarolo/chrome-another-tab"
-          tabIndex={-1}
-        >
-          <StyledGithubIcon />
+        <MenuItem onClick={handleQuoteSwitchClick}>
+          <StyledQuoteIcon />
         </MenuItem>
       </Menu>
     </Root>
@@ -155,6 +160,20 @@ const StyledHideIcon = styled(HideIcon)`
 `;
 
 const StyledColorLensIcon = styled(ColorLensIcon)`
+  color: ${(props: { theme: Theme }) => props.theme.headerColor};
+  height: 22px;
+  width: 22px;
+  margin-right: 4px;
+`;
+
+const StyledQuoteIcon = styled(QuoteIcon)`
+  color: ${(props: { theme: Theme }) => props.theme.headerColor};
+  height: 22px;
+  width: 22px;
+  margin-right: 4px;
+`;
+
+const StyledHeartIcon = styled(HeartIcon)`
   color: ${(props: { theme: Theme }) => props.theme.headerColor};
   height: 22px;
   width: 22px;

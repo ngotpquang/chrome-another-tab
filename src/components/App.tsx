@@ -15,15 +15,18 @@ import { getBookmarkTree } from "../selectors/getBookmarkTree";
 import { NoResult } from "./NoResult";
 import { Theme } from "../types/Theme";
 import { getCurrentTheme } from "../selectors/getCurrentTheme";
+import { QuoteComponent } from "./Quote";
+import { getCurrentQuote } from "../selectors/getCurrentQuote";
 
 const mapState = (state: ReduxState) => ({
   bookmarkTree: getBookmarkTree(state),
   areBookmarksReady: state.session.areBookmarksReady,
-  currentTheme: getCurrentTheme(state)
+  currentTheme: getCurrentTheme(state),
+  currentQuote: getCurrentQuote(state)
 });
 
 export const App: FC = () => {
-  const { areBookmarksReady, bookmarkTree, currentTheme } = useMappedState(
+  const { areBookmarksReady, bookmarkTree, currentTheme, currentQuote } = useMappedState(
     mapState
   );
   const { retrieveBookmarks, rehydrate } = useMappedActions(actions);
@@ -43,6 +46,7 @@ export const App: FC = () => {
     <ThemeProvider theme={currentTheme}>
       <Root>
         <Header />
+        <QuoteComponent quote={currentQuote} />
         {!isBookmarkTreeEmpty && (
           <Main>
             <FolderList bookmarkTree={bookmarkTree} />
