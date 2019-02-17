@@ -5,32 +5,38 @@
 import React from "react";
 import styled from "styled-components/macro";
 import { Quote } from "../types/Quote";
-import ReactCSSTransitionGroup from 'react-transition-group';
 import { Clock } from "./Clock";
 
 export const QuoteComponent = (props: { quote: Quote }) => {
   return (
     <QuoteBox>
-      <Clock />
-      <Sentence>Test</Sentence>
-      {/* <Sentence>{props.quote.text} &hearts;</Sentence> */}
+      <ClockBox>
+        <Clock />
+      </ClockBox>
+      {/* <Sentence>Test asdasd asdlasjdla dalskdalsd alskdlas dalskdlakd  aksldkasldklaskdlasd lkasldkalskdlaskdlaksdlakd kalsdkalskdlaksdlkasld kasdklaskdlaskdlaskdlaksdlak ldkalsdkalskdlaskdlaskdl </Sentence> */}
+      <Sentence>{props.quote.text}</Sentence>
     </QuoteBox>
   )
 };
 
 const QuoteBox = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  height: 100%;
-  min-height: 100vh;
-  padding: 1em;
+  padding: 5em;
 `;
 
 const Sentence = styled.div`
   color: #fff;
-  font-size: 2.5em;
+  font-size: 3.5em;
   padding: 1em;
-  border: solid 2px white;
-  border-radius: 10px;
+`;
+
+const ClockBox = styled.div`
+  min-width: 100%;
+  color: white;
+  font-size: 3.5em;
+  border-bottom: 2px solid white;
 `;

@@ -25,7 +25,7 @@ export const quotesReducer = (
                 if (persistedState.quotes) {
                     return {
                         ...initialState,
-                        currentQuoteId: persistedState.quotes.currentQuoteId
+                        currentQuoteId: Math.floor(Math.random() * Math.floor(initialState.availableQuotes.length))
                     };
                 }
                 break;
