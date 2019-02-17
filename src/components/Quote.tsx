@@ -15,7 +15,6 @@ export const QuoteComponent = (props: { quote: Quote }) => {
         <GoogleSearchBox />
         <Clock />
       </ClockBox>
-      {/* <Sentence>Test asdasd asdlasjdla dalskdalsd alskdlas dalskdlakd  aksldkasldklaskdlasd lkasldkalskdlaskdlaksdlakd kalsdkalskdlaksdlkasld kasdklaskdlaskdlaskdlaksdlak ldkalsdkalskdlaskdlaskdl </Sentence> */}
       <Sentence>{props.quote.text}</Sentence>
     </QuoteBox>
   )
