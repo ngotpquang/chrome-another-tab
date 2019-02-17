@@ -1,0 +1,42 @@
+:root {
+    --dark-blue: #071D49;
+}
+
+.input-search {
+    font-size: 1.5rem;
+    padding: 1.5rem;
+    border: none;
+    width: 30rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border-radius: 10px;
+    transition: background-color .5s ease-in;
+}
+
+/* .input-search {
+    box-shadow: 2px 2px 2px #ddd;
+} */
+
+.input-search:hover {
+    transition: 0.2s ease-in-out;
+    border-bottom: 1px solid white;
+    background-color: transparent;
+    transition: background-color .3s ease-out;
+}
+
+.input-search:focus,
+.input-search:active {
+    outline: none;
+    border-bottom: 1px solid white;
+    transition: background-color .3s ease-out;
+    background-color: transparent;
+}
+
+.input-search::placeholder {
+    color: #eee;
+    opacity: 0.8;
+}
+
+#img-search {
+    margin-right: 1.5rem;
+}

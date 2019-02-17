@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import moment from "moment";
+import { GoogleSearchBox } from "./GoogleSearchBox";
 
 export interface ClockState {
     date: string;
@@ -25,6 +26,7 @@ export class Clock extends React.Component<{}, ClockState>{
     render() {
         return (
             <div id="clock">
+
                 <p>{this.state.date} - {this.state.time}</p>
             </div>
         )

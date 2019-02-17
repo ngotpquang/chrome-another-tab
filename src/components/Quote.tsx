@@ -6,11 +6,13 @@ import React from "react";
 import styled from "styled-components/macro";
 import { Quote } from "../types/Quote";
 import { Clock } from "./Clock";
+import { GoogleSearchBox } from "./GoogleSearchBox";
 
 export const QuoteComponent = (props: { quote: Quote }) => {
   return (
     <QuoteBox>
       <ClockBox>
+        <GoogleSearchBox />
         <Clock />
       </ClockBox>
       {/* <Sentence>Test asdasd asdlasjdla dalskdalsd alskdlas dalskdlakd  aksldkasldklaskdlasd lkasldkalskdlaskdlaksdlakd kalsdkalskdlaksdlkasld kasdklaskdlaskdlaskdlaksdlak ldkalsdkalskdlaskdlaskdl </Sentence> */}
@@ -31,12 +33,20 @@ const QuoteBox = styled.div`
 const Sentence = styled.div`
   color: #fff;
   font-size: 3.5em;
-  padding: 1em;
+  padding: .5em 1em .5em 1em;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  box-sizing: border-box;
+  transition: background-color .3s ease-in;
+  :hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #d81b60;
+    transition: background-color .3s ease-out;
+  }
 `;
 
 const ClockBox = styled.div`
   min-width: 100%;
   color: white;
-  font-size: 3.5em;
-  border-bottom: 2px solid white;
+  font-size: 3em;
 `;
