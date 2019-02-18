@@ -12,7 +12,7 @@ export type State = {
 
 export const initialState: State = {
   availableThemes: themes,
-  currentThemeId: "deepBlue"
+  currentThemeId: "themeMoonlit"
 };
 
 export const themesReducer = (
@@ -23,6 +23,7 @@ export const themesReducer = (
     switch (action.type) {
       case getType(actions.rehydrateSuccess): {
         const persistedState = action.payload;
+        console.log(persistedState.themes);
         if (persistedState.themes) {
           return {
             ...initialState,

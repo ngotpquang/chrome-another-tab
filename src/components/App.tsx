@@ -43,8 +43,6 @@ export const App: FC = () => {
     return null;
   }
 
-  localStorage.clear();
-
   return (
     <ThemeProvider theme={currentTheme}>
       <Root>
