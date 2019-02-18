@@ -1,10 +1,16 @@
 import { Theme } from "./../types/Theme";
-// import themePinkBlue from "../assets/themes/pink-blue.json";
-// import themeDarkBlue from "../assets/themes/dark-blue.json";
-import themeDarkBlueGradient from "../assets/themes/dark-blue-gradient.json";
-import themeWithImage from "../assets/themes/with-img.json";
+import themeDarkOcean from "../assets/themes/dark-ocean.json";
+import themeMoonlit from "../assets/themes/moonlit-asteriod.json";
+import themeVision from "../assets/themes/visions-of-grandeur.json";
+import themeJupiter from "../assets/themes/jupiter.json";
+import themeSunset from "../assets/themes/sunset.json";
+import themeMantle from "../assets/themes/mantle.json";
 
 export const themes: { [id: string]: Theme } = {
-  darkBlueGradient: themeDarkBlueGradient,
-  withImg: themeWithImage
+  themeJupiter,
+  themeDarkOcean,
+  themeVision,
+  themeSunset,
+  themeMantle,
+  themeMoonlit,
 };

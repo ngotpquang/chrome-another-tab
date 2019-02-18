@@ -35,7 +35,7 @@ export const Header: FC = memo(props => {
   } = useMappedActions(actions);
   const searchBarRef = useRef<HTMLInputElement>(null);
 
-  // Overrides CMD+F default behaviour
+  // Overrides CMD+F default behavio1ur
   useKeyboardPress({
     key: "f",
     metaKey: true,
@@ -68,16 +68,8 @@ export const Header: FC = memo(props => {
       </Logo>
       <SearchBar ref={searchBarRef} query={query} onChange={setQuery} />
       <Menu>
-        <MenuItem onClick={handleBookmarksVisibilityClick}>
-          {isShowingHiddenBookmarks ? <StyledHideIcon /> : <StyledShowIcon />}
-        </MenuItem>
-        <Separator />
         <MenuItem onClick={handleThemeSwitchClick}>
           <StyledColorLensIcon />
-        </MenuItem>
-        <Separator />
-        <MenuItem onClick={handleQuoteSwitchClick}>
-          <StyledQuoteIcon />
         </MenuItem>
       </Menu>
     </Root>

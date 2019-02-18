@@ -1,5 +1,5 @@
 {
-    "appBackground": "url('./img1.jpg') center",
+    "appBackground": "linear-gradient(to left, #24c6dc, #514a9d);",
 
     "headerBackground": "transparent",
     "headerColor": "white",

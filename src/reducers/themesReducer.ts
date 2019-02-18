@@ -3,6 +3,7 @@ import { getType } from "typesafe-actions";
 import { actions } from "../actions";
 import { ReduxAction } from "../types/ReduxAction";
 import { themes } from "../config/themes";
+import { getRandomNumber } from "../utils/getRandomQuote";
 
 export type State = {
   availableThemes: typeof themes;
@@ -35,10 +36,7 @@ export const themesReducer = (
         const currentThemeIndex = availableThemeIds.indexOf(
           state.currentThemeId
         );
-        const nextThemeIndex =
-          currentThemeIndex >= availableThemeIds.length - 1
-            ? 0
-            : currentThemeIndex + 1;
+        const nextThemeIndex = getRandomNumber(currentThemeIndex, availableThemeIds.length)
         const nextThemeId = availableThemeIds[nextThemeIndex];
         state.currentThemeId = nextThemeId;
         break;

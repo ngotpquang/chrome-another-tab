@@ -1,34 +1,30 @@
 import React, { FC } from "react";
 import moment from "moment";
+import AnalogClock, { Themes } from 'react-analog-clock';
 import { GoogleSearchBox } from "./GoogleSearchBox";
 
-export interface ClockState {
-    date: string;
-    time: string;
-}
-
-export class Clock extends React.Component<{}, ClockState>{
-    constructor(props: {}) {
-        super(props);
-        this.state = {
-            date: moment().format('L'),
-            time: moment().format('LTS')
-        };
-    }
-    componentDidMount() {
-        setInterval(() => {
-            this.setState({
-                date: moment().format('L'),
-                time: moment().format('LTS')
-            });
-        }, 1000)
-    }
-    render() {
-        return (
-            <div id="clock">
-
-                <p>{this.state.date} - {this.state.time}</p>
+export const Clock = () => {
+    const customTheme = {
+        background: 'transparent',
+        border: '#eee',
+        center: '#000',
+        seconds: '#f56c6c',
+        minutes: '#ccc',
+        hour: '#eee',
+        tick: '#eee',
+        smallTickWidth: 2,
+        largeTickWidth: 4,
+        secondHandWidth: 3,
+        minuteHandWidth: 6,
+        hourHandWidth: 8,
+    };
+    return (
+        <div id="clock">
+            <div style={{ display: "flex", justifyContent: "center", alignItems: "center", margin: "3rem 10rem" }}>
+                <AnalogClock theme={customTheme} width={200} />
+                <GoogleSearchBox />
             </div>
-        )
-    }
+
+        </div>
+    )
 }

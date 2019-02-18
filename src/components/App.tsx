@@ -16,17 +16,18 @@ import { NoResult } from "./NoResult";
 import { Theme } from "../types/Theme";
 import { getCurrentTheme } from "../selectors/getCurrentTheme";
 import { QuoteComponent } from "./Quote";
-import { getCurrentQuote } from "../selectors/getCurrentQuote";
+import { getCurrentQuote, getQuoteChangedStatus } from "../selectors/getCurrentQuote";
 
 const mapState = (state: ReduxState) => ({
   bookmarkTree: getBookmarkTree(state),
   areBookmarksReady: state.session.areBookmarksReady,
   currentTheme: getCurrentTheme(state),
-  currentQuote: getCurrentQuote(state)
+  currentQuote: getCurrentQuote(state),
+  quoteChangeStatus: getQuoteChangedStatus(state)
 });
 
 export const App: FC = () => {
-  const { areBookmarksReady, bookmarkTree, currentTheme, currentQuote } = useMappedState(
+  const { areBookmarksReady, bookmarkTree, currentTheme, currentQuote, quoteChangeStatus } = useMappedState(
     mapState
   );
   const { retrieveBookmarks, rehydrate } = useMappedActions(actions);
@@ -42,11 +43,13 @@ export const App: FC = () => {
     return null;
   }
 
+  localStorage.clear();
+
   return (
     <ThemeProvider theme={currentTheme}>
       <Root>
         <Header />
-        <QuoteComponent quote={currentQuote} />
+        <QuoteComponent quote={currentQuote.text} isQuoteChanged={quoteChangeStatus} />
         {!isBookmarkTreeEmpty && (
           <Main>
             <FolderList bookmarkTree={bookmarkTree} />
@@ -64,13 +67,14 @@ const fadeIn = keyframes`
 `;
 
 const Root = styled.div`
-  animation: ${fadeIn} 0.1s ease-in-out both;
+  animation: ${fadeIn} 0.5s ease-in-out both;
   text-align: center;
   transition: all 0.6s ease-out;
   height: 100%;
   min-height: 100vh;
   overflow: hidden;
   position: relative;
+  background-position: 0 -30px;
 
   &::before {
     content: "";
@@ -82,11 +86,13 @@ const Root = styled.div`
     will-change: transform;
     z-index: -1;
     background: ${(props: { theme: Theme }) => props.theme.appBackground};
+    background-position: 0 0;
+    transition: all .3s linear;
   }
 `;
 
 const Main = styled.main`
-  animation: ${fadeIn} 0.2s ease-in-out both;
+  animation: ${fadeIn} 0.5s ease-in-out both;
   animation-delay: 0.1s;
   padding: 0 40px;
   display: flex;

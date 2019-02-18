@@ -6,7 +6,7 @@
   "manifest_version": 2,
   "permissions": ["bookmarks", "chrome://favicon/"],
   "browser_action": {
-    "default_title": "Another Tab",
+    "default_title": "Quang's Tab",
     "default_icon": "icon48.png"
   },
   "icons": {

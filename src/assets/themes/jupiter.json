@@ -1,5 +1,5 @@
 {
-  "appBackground": "#071D49",
+  "appBackground": "linear-gradient(to left, #ffd89b, #19547b);",
 
   "headerBackground": "transparent",
   "headerColor": "white",
